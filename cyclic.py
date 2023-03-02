@@ -12,13 +12,22 @@ def llprint(lst, num):
 
 def find_cycle(lst):
     """return the start index and length of the cycle"""
-    """tortoise = lst.head
+    tortoise = lst.head
     hare = lst.head.next.next
     x = 0
-    while tortoise:"""
-
-
+    while tortoise != hare:
+        tortoise = tortoise.next
+        hare = hare.next.next
+        x += 1
+    tortoise = tortoise.next
+    z = 0
+    while tortoise != hare:
+        tortoise = tortoise.next
+        z += 1
+    return x, z
 
 if __name__ == "__main__":
 
-    llprint(lst, 10)
+    tup = find_cycle(lst)
+    print(f"cycle start: {tup[0]}")
+    print(f"length: {tup[1]}")
